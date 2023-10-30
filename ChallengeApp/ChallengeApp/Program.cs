@@ -31,7 +31,7 @@ List<Employee> employees = new()
 int maxResult = -1;
 Employee employeeWithMaxResult = null;
 
-foreach (var employee in employees)
+foreach(var employee in employees)
 {
     if(employee.Result > maxResult)
     {
