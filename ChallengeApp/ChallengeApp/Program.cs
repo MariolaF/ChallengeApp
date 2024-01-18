@@ -8,7 +8,7 @@ Console.WriteLine();
 Console.WriteLine("Aby zakończyć i wyświetlić końcowa ocene wciśnij: q ");
 Console.WriteLine();
 
-var employee = new Employee("Mariola", "Furdak");
+var employee = new Employee("Mariola", "Furdak","female", 23);
 
 
 while (true)
