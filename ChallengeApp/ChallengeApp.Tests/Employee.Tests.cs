@@ -5,7 +5,7 @@
         [Test]
         public void TestOfStatisticMaxValue()
         {
-            var employee = new Employee("Mariola", "Furdak");
+            var employee = new Employee("Mariola", "Furdak", "Female", 24);
             //arrange
             employee.AddGrade(20);
             employee.AddGrade(25);
@@ -18,7 +18,7 @@
         [Test]
         public void TestOfStatisticMinValue()
         {
-            var employee = new Employee("Mariola", "Furdak");
+            var employee = new Employee("Mariola", "Furdak", "Female", 24);
             //arrange
             employee.AddGrade(20);
             employee.AddGrade(20);
@@ -31,7 +31,7 @@
         [Test]
         public void TestOfStatisticAverage()
         {
-            var employee = new Employee("Mariola", "Furdak");
+            var employee = new Employee("Mariola", "Furdak", "Female", 24);
             //arrange
             employee.AddGrade(20);
             employee.AddGrade(20);
@@ -44,7 +44,7 @@
         [Test]
         public void TestForALetter()
         {
-            var employee = new Employee("Mariola", "Furdak");
+            var employee = new Employee("Mariola", "Furdak", "Female", 24);
             float grade1 = 83;
             float grade2 = 81;
             float grade3 = 83;
@@ -60,7 +60,7 @@
         [Test]
         public void TestForBLetter()
         {
-            var employee = new Employee("Mariola", "Furdak");
+            var employee = new Employee("Mariola", "Furdak", "Female", 24);
             float grade1 = 63;
             float grade2 = 61;
             float grade3 = 63;
@@ -76,7 +76,7 @@
         [Test]
         public void TestForCLetter()
         {
-            var employee = new Employee("Mariola", "Furdak");
+            var employee = new Employee("Mariola", "Furdak","Female", 24);
             float grade1 = 43;
             float grade2 = 41;
             float grade3 = 43;
@@ -92,7 +92,7 @@
         [Test]
         public void TestForDLetter()
         {
-            var employee = new Employee("Mariola", "Furdak");
+            var employee = new Employee("Mariola", "Furdak", "Female",24);
             float grade1 = 23;
             float grade2 = 21;
             float grade3 = 23;
