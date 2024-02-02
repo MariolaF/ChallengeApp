@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     public class Person
     {
