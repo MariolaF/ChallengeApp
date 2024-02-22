@@ -10,18 +10,25 @@ namespace ChallengeApp
         {
         }
         private const string fileName = "grades.txt";
+        public override event GradeAddedDelegate GradeAdded;    
 
         public override void AddGrade(float grade)
         {
             using (var write = File.AppendText(fileName))
+            {
                 if (grade >= 0 && grade <= 100)
                 {
                     write.WriteLine(grade);
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
                 }
                 else
                 {
                     throw new Exception("Invalid grade value");
                 }
+            }
         }
         public override void AddGrade(double grade)
         {
