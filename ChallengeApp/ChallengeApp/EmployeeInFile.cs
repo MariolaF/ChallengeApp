@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO.Enumeration;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     public class EmployeeInFile : EmployeeBase
     {
@@ -14,21 +11,22 @@ namespace ChallengeApp
 
         public override void AddGrade(float grade)
         {
-            using (var write = File.AppendText(fileName))
+            if (grade >= 0 && grade <= 100)
             {
-                if (grade >= 0 && grade <= 100)
+                using (var write = File.AppendText(fileName))
                 {
                     write.WriteLine(grade);
-                    if (GradeAdded != null)
-                    {
-                        GradeAdded(this, new EventArgs());
-                    }
                 }
-                else
+                if (GradeAdded != null)
                 {
-                    throw new Exception("Invalid grade value");
+                    GradeAdded(this, new EventArgs());
                 }
             }
+            else
+            {
+                throw new Exception("Invalid grade value");
+            }
+            
         }
         public override void AddGrade(double grade)
         {
@@ -87,64 +85,19 @@ namespace ChallengeApp
 
         public override Statistics GetStatistics()
         {
-            var gradesFromFile = this.ReadGradesFromFile();
-            var result = this.CountStatistics(gradesFromFile);
-            return result;
-        }
-
-        private List<float> ReadGradesFromFile()
-        {
-            var grades = new List<float>();
-            if (File.Exists($"{fileName}")) ;
+            var statistics = new Statistics();
+            if (File.Exists(fileName))
             {
-                using (var reader = File.OpenText($"{fileName}"))
+                using (var reader = File.OpenText(fileName))
                 {
                     var line = reader.ReadLine();
-                    while ( line != null )
+                    while (line != null)
                     {
                         var number = float.Parse(line);
-                        grades.Add(number);
+                        statistics.AddGrade(number);
                         line = reader.ReadLine();
                     }
                 }
-            }
-            return grades;
-        }
-        private Statistics CountStatistics(List<float> grades)
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            foreach (var grade in grades)
-            {
-                if (grade >= 0)
-                {
-                    statistics.Max = Math.Max(statistics.Max, grade);
-                    statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Average += grade;
-                }
-            }
-            statistics.Average /= grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
             }
             return statistics;
         }

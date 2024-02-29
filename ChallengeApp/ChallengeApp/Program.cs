@@ -8,7 +8,7 @@ Console.WriteLine();
 Console.WriteLine("Aby zakończyć i wyświetlić końcowa ocene wciśnij: q ");
 Console.WriteLine();
 
-var employee = new EmployeeInMemory("Mariola", "Furdak");
+var employee = new EmployeeInFile("Mariola", "Furdak");
 employee.GradeAdded += EmployeeGradeAdded;
 
 void EmployeeGradeAdded(object sender, EventArgs args)
